@@ -10,57 +10,25 @@
 
     <script>
       // Get references to the input, result, and submit button
-      let pass = document.getElementById("pass");
-      let result = document.getElementById("result");
-      let submit = document.getElementById("submit");
+      const pass = document.getElementById("pass");
+      const result = document.getElementById("result");
+      const submit = document.getElementById("submit");
 
       // Function to validate the password
       function validatePassword(password) {
-        let hasLower = false;
-        let hasUpper = false;
-        let hasDigit = false;
+        const isValid =
+          password.length >= 8 &&
+          /[a-z]/.test(password) &&
+          /[A-Z]/.test(password) &&
+          /\d/.test(password);
 
-        if (password.length < 8) {
-          result.textContent = "Password must be at least 8 characters long.";
-          result.style.color = "red";
-          return false;
-        }
-
-        for (let char of password) {
-          if (char >= "a" && char <= "z") {
-            hasLower = true;
-          } else if (char >= "A" && char <= "Z") {
-            hasUpper = true;
-          } else if (char >= "0" && char <= "9") {
-            hasDigit = true;
-          }
-
-          // Break early if all conditions are met
-          if (hasLower && hasUpper && hasDigit) {
-            result.textContent = "Password is valid.";
-            result.style.color = "green";
-            return true;
-          }
-        }
-
-        // Check which conditions are missing
-        if (!hasLower) {
-          result.textContent =
-            "Password must contain at least one lowercase letter.";
-        } else if (!hasUpper) {
-          result.textContent =
-            "Password must contain at least one uppercase letter.";
-        } else if (!hasDigit) {
-          result.textContent = "Password must contain at least one digit.";
-        }
-        result.style.color = "red";
-        return false;
+        result.textContent = isValid ? "Valid" : "Invalid";
+        result.style.color = isValid ? "green" : "red";
       }
 
       // Event listener for the submit button
       submit.addEventListener("click", () => {
-        let pwd = pass.value;
-        validatePassword(pwd);
+        validatePassword(pass.value);
       });
     </script>
   </body>
