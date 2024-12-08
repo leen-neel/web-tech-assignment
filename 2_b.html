@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Delivery</title>
+  </head>
+  <body>
+    <h1>Pizza Delivery Order Form</h1>
+    <form action="/submit-order" method="POST">
+      <h2>Choose Your Pizza</h2>
+      <label for="flavor">Pizza Flavor:</label>
+      <select id="flavor" name="flavor" required>
+        <option value="margherita">Margherita</option>
+        <option value="pepperoni">Pepperoni</option>
+        <option value="bbq_chicken">BBQ Chicken</option>
+        <option value="veggie">Veggie</option>
+      </select>
+
+      <h2>Pizza Size</h2>
+      <label>
+        <input type="radio" name="size" value="small" required /> Small
+      </label>
+      <label> <input type="radio" name="size" value="medium" /> Medium </label>
+      <label> <input type="radio" name="size" value="large" /> Large </label>
+
+      <h2>Extras</h2>
+      <label>
+        <input type="checkbox" name="extras" value="extra_cheese" /> Extra
+        Cheese
+      </label>
+      <label>
+        <input type="checkbox" name="extras" value="mushrooms" /> Mushrooms
+      </label>
+      <label>
+        <input type="checkbox" name="extras" value="olives" /> Olives
+      </label>
+      <label>
+        <input type="checkbox" name="extras" value="jalapenos" /> Jalapenos
+      </label>
+
+      <h2>Delivery Address</h2>
+      <label for="address">Address:</label><br />
+      <textarea
+        id="address"
+        name="address"
+        rows="4"
+        cols="50"
+        required
+      ></textarea>
+
+      <br /><br />
+      <button type="submit">Place Order</button>
+    </form>
+  </body>
+</html>

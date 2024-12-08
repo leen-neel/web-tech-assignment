@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Assignment 1 (A)</title>
+  </head>
+  <body>
+    <input type="password" id="pass" placeholder="Enter your password" />
+    <p id="result"></p>
+    <button id="submit">Submit</button>
+
+    <script>
+      // Get references to the input, result, and submit button
+      let pass = document.getElementById("pass");
+      let result = document.getElementById("result");
+      let submit = document.getElementById("submit");
+
+      // Function to validate the password
+      function validatePassword(password) {
+        let hasLower = false;
+        let hasUpper = false;
+        let hasDigit = false;
+
+        if (password.length < 8) {
+          result.textContent = "Password must be at least 8 characters long.";
+          result.style.color = "red";
+          return false;
+        }
+
+        for (let char of password) {
+          if (char >= "a" && char <= "z") {
+            hasLower = true;
+          } else if (char >= "A" && char <= "Z") {
+            hasUpper = true;
+          } else if (char >= "0" && char <= "9") {
+            hasDigit = true;
+          }
+
+          // Break early if all conditions are met
+          if (hasLower && hasUpper && hasDigit) {
+            result.textContent = "Password is valid.";
+            result.style.color = "green";
+            return true;
+          }
+        }
+
+        // Check which conditions are missing
+        if (!hasLower) {
+          result.textContent =
+            "Password must contain at least one lowercase letter.";
+        } else if (!hasUpper) {
+          result.textContent =
+            "Password must contain at least one uppercase letter.";
+        } else if (!hasDigit) {
+          result.textContent = "Password must contain at least one digit.";
+        }
+        result.style.color = "red";
+        return false;
+      }
+
+      // Event listener for the submit button
+      submit.addEventListener("click", () => {
+        let pwd = pass.value;
+        validatePassword(pwd);
+      });
+    </script>
+  </body>
+</html>
